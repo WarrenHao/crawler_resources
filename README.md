@@ -108,27 +108,113 @@ info <- sapply(node, xmlValue) #xmValue函数只提取值，不提取最后的�
 
 ##### 正则
 
+```python
+In: re.findall(r'([\d]+)', '123abc456')
+Out:['123', '456']
+
+In:re.findall(r'([a-z]+)', '123abc456edF', re.I)
+Out:['abc', 'edF']
+
+In:
+    test_str = '''123abc456edF:
+    gif88'''
+    re.findall(r'edF(.*)88', test_str, re.S)
+Out:[':\ngif']
+
+# 贪婪匹配
+In:
+    test_str = '''123abc456edF:
+    gif88  edF9088'''
+    re.findall(r'edF(.*)88', test_str, re.S)
+Out:[':\ngif88  edF90']
+    
+# 非贪婪匹配
+In:
+    test_str = '''123abc456edF:
+    gif88  edF9088'''
+    re.findall(r'edF(.*？)88', test_str, re.S)
+Out:[':\ngif', '90']
+
+```
+
+
+
 ##### xpath
 
 ```python
-from etree import lxml
+from lxml import etree
+
+# 寻找所有的li标签
+html = etree.parse(html, etree.HTMLParser())
+
+# 提取文本信息
+html.xpath('//li/text()')
 ```
 
 ##### Beautifulsoup
 
 ```python
 from bs4 import BeautifulSoup
+
+
+res = requests.get(url).text
+soup = BeautifulSoup(html, "lxml")
+# 找到所有的li标签
+lis = soup.find_all('li')
+# 提取文本信息
+for li in lis:
+    print(li.get_text())
 ```
 
 #### 抓包分析
 
+目前多数数据相关网站并不采用静态加载或返回html文件，而是通过Ajax异步加载方式，一部分加载基本架构的html，一部分加载数据的json文件，如携程的旅游评论。
+
+```python
+import json
+import requests
+data = {
+  "arg": {
+    "channelType": 2,
+    "collapseType": 0,
+    "commentTagId": 0,
+    "pageIndex": 2,
+    "pageSize": 10,
+    "poiId": 75595,
+    "sourceType": 1,
+    "sortType": 3,
+    "starType": 0
+  },
+  "head": {
+    "cid": "09031170213998177334",
+    "ctok": "",
+    "cver": "1.0",
+    "lang": "01",
+    "sid": "8888",
+    "syscode": "09",
+    "auth": "",
+    "xsid": "",
+    "extension": []
+  }
+}
+url = "https://m.ctrip.com/restapi/soa2/13444/json/getCommentCollapseList"
+res = requests.post(url, data=json.dumps(data))
+print(res.json())
+```
+
+返回的json字符可直接当作dict对象处理。
+
 #### js逆向
+
+爬虫中最有技术难度的一部分，部分大型网站如知乎、微博等存在加密参数的反爬措施，需要通过js逆向来破解这些加密参数。
 
 #### 自动化
 
+使用selenium 2min上手一个小型爬虫
+
 - [chromedriver](https://googlechromelabs.github.io/chrome-for-testing/#stable)
 
-
+缺陷:selenium效率太低，并且容易被反制，一般用于简单爬虫或部分加密参数破解困难的网站，非必要时一般不使用。
 
 ## Cases
 
