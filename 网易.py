@@ -22,6 +22,8 @@ data = {
 }
 '''
 
+# 65766就是对应song的id
+
 # 处理加密过程
 
 def d_function_equal_to_arsea(d: str, e, f, g) -> str:

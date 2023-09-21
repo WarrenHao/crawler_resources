@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+
+
 # 清除selenium的javascript头
 option = webdriver.ChromeOptions()
 option.add_argument('disable-gpu')

@@ -106,6 +106,20 @@ info <- sapply(node, xmlValue) #xmValue函数只提取值，不提取最后的�
 
 #### 解析器
 
+##### 正则
+
+##### xpath
+
+```python
+from etree import lxml
+```
+
+##### Beautifulsoup
+
+```python
+from bs4 import BeautifulSoup
+```
+
 #### 抓包分析
 
 #### js逆向
