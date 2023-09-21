@@ -27,6 +27,36 @@
 
 ### 标签与dom
 
+```mermaid
+graph LR
+ol((ol))
+li1((li1))
+li2((li2))
+ol-->li1
+ol-->li2
+li1--div-->item
+item--div-->pic
+item--div-->info
+pic--a-->图片链接
+pic--a-->图片
+
+info--div-->hd头部
+info--div-->bd主体
+hd头部--a-->播放链接
+播放链接--span-->title
+bd主体--p-->导演
+bd主体--div-->星级
+星级--span-->评分
+星级--span-->评分人数
+bd主体--div-->格言
+
+li2-->...
+ol-->......
+
+
+
+```
+
 
 
 ## 爬虫实现
