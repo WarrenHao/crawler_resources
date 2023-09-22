@@ -244,13 +244,22 @@ print(res.json())
 
 ## Further discussion
 
+### 多线程（进程）
+
+- multiprocessing模块，由于python中线程为伪线程，使用进程实现，与并行计算类似，需要一个manager管理和传递各进程中产生的变量信息
+
 ### 异步
+
+- 提供了async等易于实现的异步框架
 
 ### 协程
 
-### 多线程（进程）
+- 主要使用gevent模块，并使用monkey为其阻塞过程打补丁，实现一边等待，一边发送请求，实际中具有叫好的性能
 
 ### [scrapy](https://github.com/scrapy/scrapy)
 
+- 简化代码，提供了完备的爬虫框架
+
 ### [分布式scrapy-redis](https://github.com/rmax/scrapy-redis)
 
+- 基于scrapy和redis数据库，各台server的调度器从redis数据库中获取爬虫任务，实现分布式

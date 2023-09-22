@@ -7,6 +7,7 @@ import time
 option = webdriver.ChromeOptions()
 option.add_argument('disable-gpu')
 option.add_experimental_option('excludeSwitches', ['enable-automation'])
+option.add_experimental_option('excludeSwitches', ['enable-logging'])
 
 url = 'https://music.163.com/#/song?id=65766'
 browser = webdriver.Chrome(chrome_options=option)
@@ -32,4 +33,4 @@ for page in range(1, 5):
 
     # 找到下一页按钮
     browser.find_element(by=By.CSS_SELECTOR, value='.zbtn.znxt').click()
-    time.sleep(1)
+    time.sleep(3)
