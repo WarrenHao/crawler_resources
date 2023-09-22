@@ -244,6 +244,13 @@ print(res.json())
 
 ## Further discussion
 
+### 一些可能的反反爬
+
+- 随机请求头
+- cookie池
+- ip代理池
+- 甚至全部整合，如大众点评网，反爬措施十分严格，可参见**[dianping_spider](https://github.com/Sniper970119/dianping_spider)**
+
 ### 多线程（进程）
 
 - multiprocessing模块，由于python中线程为伪线程，使用进程实现，与并行计算类似，需要一个manager管理和传递各进程中产生的变量信息
