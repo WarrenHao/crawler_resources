@@ -92,6 +92,9 @@ const_dict = {
     'g': '0CoJUm6Qyw8W8jud',
 }
 
+
+
+# 具体的js加密过程如下
 '''
 function a(a) {
         var d, e, b = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", c = "";

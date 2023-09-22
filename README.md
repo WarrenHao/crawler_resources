@@ -254,7 +254,7 @@ print(res.json())
 
 ### 协程
 
-- 主要使用gevent模块，并使用monkey为其阻塞过程打补丁，实现一边等待，一边发送请求，实际中具有叫好的性能
+- 主要使用gevent模块，并使用monkey为其阻塞过程打补丁，实现一边等待，一边发送请求，实际中具有较好的性能
 
 ### [scrapy](https://github.com/scrapy/scrapy)
 
